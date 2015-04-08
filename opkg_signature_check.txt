@@ -95,7 +95,7 @@ Step2: Create self-signed certificate and Packages.sig file
 			openssl x509 -inform PEM -in server.crt -out public.pem
 
 		3) create .sig file using openssl
-			openssl crl2pkcs7 -nocrl -certfile server.crt -in Packages -out Packages.sig
+			openssl smime -sign -in Packages -inkey server.key -signer server.crt -binary -outform PEM -out Packages.sig
 
 			Note:
 			. Packages.sig -> output signature file 
